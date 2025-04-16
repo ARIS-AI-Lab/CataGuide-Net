@@ -1,0 +1,6 @@
+checkpoint_train/
+npys_train/
+temp/
+log/
+lib/
+eval/kpt_visionlization.py

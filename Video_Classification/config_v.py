@@ -1,0 +1,55 @@
+import os
+params = {
+    "is_training": True,
+    "is_train_from_begin": False,
+    "detect_eyes": True,
+    "num_epoch": 200,
+    "n_classes": 10,
+    "batch_size": 14,
+    "max_checkpoints": 4,
+    "window_size": 256,
+    "step_size": 128,
+    "video_fps": 25,
+    "num_samples": 64,
+    "class_mapping":{
+        0: 0,
+        1: 1,
+        3: 2,
+        4: 3,
+        5: 4,
+        6: 5,
+        8: 6,
+        9: 7,
+        10: 8,
+        11: 9
+    },
+    "clip_label": r'C:\Users\Charl\PycharmProjects\Video_Classification\data\merged.csv',
+    "df_path": r'C:\Users\Charl\PycharmProjects\Video_Classification\data\phases.csv',
+    "indices_file": r"C:\Users\Charl\PycharmProjects\Video_Classification\data",
+    "model_param":{
+        "model_dir": './checkpoint_train',
+        "pretrain_model_path": r'C:\Users\Charl\PycharmProjects\Video_Classification\checkpoint_train\epoch_80.pth',
+        "use_pretrained": False,
+        "freeze_decoder": False,
+        "max_learning_rate": 0.0005,
+        "base_learning_rate": 0.0000004,
+        "weight_decay": 1e-5,
+        "save_checkpoint_epochs": 10,
+        "warmup_epochs": 0,
+        "hold_epochs": 0,
+        "max_kpts": 2,
+        "tool_and_eyes_class":{'Capsulorhexis Cystotome': 1, 'Capsulorhexis Forceps': 2, 'Slit Knife': 3, 'Gauge': 4,
+                               'Incision Knife': 5, 'Irrigation-Aspiration': 6, 'Katena Forceps': 7, 'Spatula': 8,
+                               'Lens Injector': 9, 'Phacoemulsification Tip': 10, 'Lens': 11, 'Cornea': 12,
+                               'Pupil': 13, 'cornea1': 14, 'pupil1': 15},
+    },
+    "input_pipeline_params":{
+        "image_size": [224, 224],
+        "npy_dir": r'C:\Users\Charl\PycharmProjects\Video_Classification\npys_',
+        "npy_test_dir": r"D:\npys_",
+        "dataset_path": r'C:\Users\Charl\Downloads\Video_Classification',
+        "dataset_instruction": os.path.join(r'C:\Users\Charl\Downloads\Video_Classification',
+                                            'dataset_splited.csv')
+
+    }
+}
