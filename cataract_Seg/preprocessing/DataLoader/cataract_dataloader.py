@@ -14,7 +14,6 @@ import torch.nn.functional as F
 class CustomImageDataset(Dataset):
     def __init__(self, files_dir, transform=None):
         """
-
         :param annotations_file:  description, tags, size, objects
         :param img_dir: contains images matches json
         :param
@@ -28,14 +27,14 @@ class CustomImageDataset(Dataset):
         self.transform = transform
 
     def __len__(self):
-        # 返回数据集的样本数量
+        # Return the number of samples in the dataset
         return len(self.img_dir)
 
     def __getitem__(self, idx):
         """
-        根据索引返回图像和标注
+        Return the images and annotations based on the index
         :param idx: sample index
-        :return: 预处理后的图像及关键点
+        :return:  preprocess image and kpts
         """
         image_path = self.img_dir[idx]
         anno_name = image_path.split('\\')[-1] + '.json'
@@ -82,7 +81,7 @@ class CustomImageDataset(Dataset):
 
             ImageDraw.Draw(mask).polygon([tuple(p) for p in labels[class_id]], outline=class_id, fill=class_id)
 
-        # 再绘制手术工具的掩码
+        # Draw the masks of the surgical tools again
         for class_id in tool_classes:
             arr = find_tip_kpt(labels[class_id]) / (mask.width, mask.height)
             sorted_arr = arr[arr[:, 1].argsort()]
@@ -141,7 +140,7 @@ def load_dataloader():
 
     ])
 
-    # 自定义的 CustomTransform 包含旋转和水平翻转的处理
+    # The CustomTransform includes the processing of rotation and horizontal flipping
     custom_transform = CustomTransform(image_transform=image_transform, augmentation_prob=0.45, rotation_angle=60)
     # custom_transform = CustomTransform_test(image_transform=image_transform, rotation_angle=30, flip_prob=0.5)
     folder_path = params['input_pipeline_params']['dataset_path']
@@ -155,26 +154,24 @@ def load_dataloader():
 
 def pad_tips_landmark(tips_landmark, max_tool_class=params['model_param']['max_kpts']):
     target_length = max_tool_class
-    # 检查当前长度
+    # Check the current length
     current_length = tips_landmark.shape[0]
 
-    # 如果当前长度小于目标长度，进行填充
+    # If the current length is less than the target length, fill it
     if current_length < target_length:
         padding_length = target_length - current_length
-        # 创建填充值，shape 为 (padding_length, 3)
+        # Create a fill value with a shape of (padding_length, 3)
         padding = np.array([[-1, -1, 0]] * padding_length)
-        # 将原始数组和填充值拼接起来
+        # Concatenate the original array and the fill value
         padded_landmark = np.vstack((tips_landmark, padding))
     elif current_length > target_length:
-        # 如果当前长度超过目标长度，则截取前 target_length 个元素
+        # If the current length exceeds the target length, extract the first target_length elements
         padded_landmark = tips_landmark[:target_length]
     else:
-        # 如果当前长度正好等于目标长度，直接返回
+        # If the current length is exactly equal to the target length, return directly
         padded_landmark = tips_landmark
 
     return padded_landmark
-
-# 示例用法
 
 
 if __name__ == '__main__':
@@ -188,4 +185,4 @@ if __name__ == '__main__':
         print(f"Mask size: {mask.size()}")
         print(f"tips_kpts size: {tips_kpts.size()}: {tips_kpts}")
         # print(f"Landmarks: {labels}")
-        break  # 仅显示一个批次
+        break
