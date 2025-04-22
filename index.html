@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CataGuide-Net · ARIS AI Lab</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --primary-color: #007acc;
+      --text-color: #333;
+      --bg-light: #f9f9f9;
+      --badge-bg: #e0e0e0;
+      --badge-hover: #d4d4d4;
+    }
+    body { margin:0; font-family: Arial, sans-serif; color: var(--text-color); background: #fafafa; }
+    .wrapper { max-width: 960px; margin: 0 auto; padding: 0 1rem; }
+    header { background: #fff; padding: 1rem 0; box-shadow: 0 2px 4px rgba(0,0,0,0.1); position: sticky; top:0; z-index:100; }
+    header nav { display: flex; justify-content: center; }
+    header nav a { margin: 0 1rem; color: var(--text-color); text-decoration: none; font-weight: bold; }
+
+    .hero { display: flex; flex-direction: column; align-items: center; justify-content: center; height: 60vh; background: var(--bg-light); text-align: center; padding: 2rem 0; }
+    .hero h1 { font-size: 3rem; margin-bottom: 0.5rem; }
+    .hero p { font-size: 1.2rem; max-width: 600px; margin-bottom: 1rem; }
+
+    /* Authors */
+    .authors { font-size: 1rem; margin-bottom: 1rem; color: var(--primary-color); text-align: center; }
+    .authors a { color: var(--primary-color); text-decoration: none; margin: 0 0.25rem; }
+    .authors sup { font-size: 0.8rem; }
+
+    .badges { margin-top: 0.5rem; text-align: center; }
+    .badge { display: inline-block; margin: 0.25rem; padding: 0.4rem 0.8rem; background: var(--badge-bg); color: var(--text-color); text-decoration: none; font-size: 0.9rem; border-radius: 4px; transition: background 0.2s; }
+    .badge:hover { background: var(--badge-hover); }
+
+    section { padding: 4rem 0; border-top: 1px solid #e0e0e0; }
+    h2 { text-align: center; margin-bottom: 1rem; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); gap:2rem; }
+    .card { background: #fff; padding:2rem; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1); }
+    .card h3 { margin-top:0; }
+
+    footer { text-align:center; padding:2rem 0; background:#fff; border-top:1px solid #eaeaea; }
+    a.button { display:inline-block; margin-top:1rem; padding:0.75rem 1.5rem; background: var(--primary-color); color:#fff; text-decoration:none; border-radius:4px; }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <header>
+      <nav>
+        <a href="#hero">Home</a>
+        <a href="#abstract">Abstract</a>
+        <a href="#features">Features</a>
+        <a href="#results">Results</a>
+        <a href="#architecture">Architecture</a>
+        <a href="#getting-started">Get Started</a>
+        <a href="#citation">Citation</a>
+      </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+      <h1>CataGuide-Net</h1>
+      <p>Real-time Cataract Surgery Guidance with Instrument Segmentation, Tip Detection, and Stage Recognition.</p>
+
+      <!-- Authors -->
+      <div class="authors">
+        <a href="#">Jiayi Chen</a><sup>1</sup>,
+        <a href="mailto:oxo31@case.edu">Orhan Ozguner</a><sup>1</sup>
+      </div>
+
+      <!-- Badge links -->
+      <div class="badges">
+        <a class="badge" href="#" target="_blank">📝 arXiv</a>
+        <a class="badge" href="https://github.com/ARIS-AI-Lab/CataGuide-Net" target="_blank">🐙 GitHub</a>
+        <a class="badge" href="https://www.synapse.org/Synapse:syn53404507" target="_blank">📂 CataGuide-1k Dataset</a>
+        <a class="badge" href="#getting-started">🚀 Quick Start</a>
+      </div>
+      <a class="button" href="https://github.com/ARIS-AI-Lab/CataGuide-Net" target="_blank">View on GitHub</a>
+    </section>
+
+    <!-- Abstract Section -->
+    <section id="abstract" style="line-height: 1.8; margin-bottom: 2rem;">
+      <h2 style="margin-bottom: 1rem; text-align: center;">Abstract</h2>
+      <p style="margin-bottom: 1rem;">
+        CataGuide-Net introduces a modular AI system designed to enhance cataract surgery assistance by integrating segmentation, stage recognition, and trajectory learning. Inspired by imitation learning frameworks, our approach avoids manual reward engineering by leveraging expert demonstrations to learn optimal surgical strategies.
+      </p>
+      <p style="margin-bottom: 1rem;">
+        Unlike traditional trajectory learning methods, CataGuide-Net infers reward structures implicitly and adapts to real-time intraoperative variations. The system combines LWANet for tool segmentation, TimeSformer for stage classification, and an offline GAIL-inspired module for trajectory generation and skill evaluation.
+      </p>
+      <p>
+        Evaluated on the Cataract-101 dataset, our method shows improved precision and responsiveness compared to conventional models. The framework demonstrates potential as an intelligent guidance tool, particularly in supporting less experienced surgeons and advancing towards autonomous surgical assistance.
+      </p>
+    </section>
+    
+
+    <!-- Features Section -->
+    <section id="features">
+      <h2>Key Features</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Instrument Segmentation</h3>
+          <p>Accurate segmentation of surgical tools and ocular structures on CataGuide-1k dataset.</p>
+        </div>
+        <div class="card">
+          <h3>Tip Detection</h3>
+          <p>Precise localization of tool tips to facilitate trajectory planning and expert demonstration.</p>
+        </div>
+        <div class="card">
+          <h3>Stage Recognition</h3>
+          <p>Video-based recognition of cataract surgery stages using transformer-based models.</p>
+        </div>
+        <div class="card">
+          <h3>Offline Trajectory Learning</h3>
+          <p>GAIL-inspired model for surgical trajectory imitation and skill evaluation.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Results Section -->
+
+
+    <!-- Architecture Section -->
+    <section id="architecture">
+      <h2>System Architecture</h2>
+      <p style="text-align:center;">The pipeline integrates three major modules:</p>
+      <ul style="max-width:600px; margin:0 auto 1rem; text-align:left;">
+        <li style="margin-bottom:1rem;"><strong>LWANet</strong> for instrument & structure segmentation and tip detection.</li>
+        <li style="margin-bottom:1rem;"><strong>TimeSformer</strong> for stage recognition in video streams.</li>
+        <li style="margin-bottom:1rem;"><strong>Offline RL Module</strong> for trajectory learning & feedback generation.</li>
+      </ul>
+      <img src="static/image/System_arch.png" alt="CataGuide-Net Architecture" style="display:block; max-width:60%; margin:2rem auto 0;" />
+    </section>
+
+
+    <section id="results">
+      <h2>Results</h2>
+      <div style="display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+        <img src="static/gif/stage_2.gif" alt="Result 1" style="width: 48%; height: auto; border-radius: 4px;" />
+        <img src="static/gif/stage_6.gif" alt="Result 2" style="width: 48%; height: auto; border-radius: 4px;" />
+        
+      </div>
+    </section>
+
+    <section id="potential_ applications">
+      <h2>Potential Applications</h2>
+      <div style="display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
+        <img src="static/image/auto_surgery.png" alt="Result 1" style="width: 48%; height: auto; border-radius: 4px;" />
+        <img src="static/image/teaching.png" alt="Result 2" style="width: 48%; height: auto; border-radius: 4px;" />
+        
+      </div>
+    </section>
+
+
+    <!-- Getting Started Section -->
+    <section id="getting-started" style="text-align: center; padding: 2rem 0;">
+      <h2>Getting Started</h2>
+      <p style="margin: 1rem 0; font-size: 1.1rem;">
+        Welcome to visit the ARIS AI Lab’s project page!  
+        Explore our CataGuide‑Net repository for code, datasets, and detailed documentation.
+      </p>
+      <a
+        href="https://github.com/ARIS-AI-Lab/CataGuide-Net"
+        target="_blank"
+        style="
+          display: inline-block;
+          padding: 0.75rem 1.5rem;
+          background-color: #007acc;
+          color: #fff;
+          border-radius: 0.5rem;
+          text-decoration: none;
+          font-weight: 500;
+        "
+      >
+        🚀 Visit CataGuide‑Net on GitHub
+      </a>
+    </section>
+    
+
+    <!-- Citation Section -->
+    <section id="citation" style="padding: 2rem 1rem;">
+      <h2 style="margin-bottom: 1rem; text-align: left;">Citation</h2>
+      <p style="margin-bottom: 1.5rem; color: #555; text-align: left;">
+        If you find our work helpful, please consider citing us:
+      </p>
+      <pre style="
+          background-color: #f6f8fa;
+          border: 1px solid #e1e4e8;
+          border-radius: 6px;
+          padding: 1rem;
+          overflow-x: auto;
+          max-width: 800px;
+          margin: 0 auto;
+          font-family: Menlo, Consolas, 'Liberation Mono', Courier, monospace;
+          font-size: 0.95rem;
+          line-height: 1.4;
+          color: #333;
+          text-align: left;     /* 保证代码左对齐 */
+        ">
+    <!--<code>@inproceedings{Jiayi2025CataGuide,
+      title     = {CataGuide‑Net: A Multi‑Module Framework for Cataract Surgery Guidance},
+      author    = {Chen, Jiayi and Ozguner, Orhan and others},
+      booktitle = {Proceedings of …},
+      year      = {2025}
+    }</code>-->
+    <code> Coming soon
+    </code>
+      </pre>
+    </section>
+    
+    
+    
+
+    <!-- Footer -->
+    <footer>
+      <p>&copy; 2025 ARIS AI Lab · <a href="https://aris-ai-lab.github.io">aris-ai-lab.github.io</a></p>
+    </footer>
+  </div>
+</body>
+</html>
