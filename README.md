@@ -34,4 +34,5 @@ python GAIL_train.py
 ```
 
 You can find all our pre-trained model [here](https://drive.google.com/drive/folders/1XWkPpOvfDpVvim4MM7nbUQyge_vu9xJL)
+(If you can't access, please contact us)
 
