@@ -27,8 +27,10 @@ cd Video_Classification
 ```bash
 pip install -r requirements.txt
 ```
-
-### 2. Train the Trajectory Generator
+```bash
+git clone git@github.com:ARIS-AI-Lab/CataGuide-Net.git
+```
+### 3. Train the Trajectory Generator
 ```bash
 python diffusion_train.py
 ```
