@@ -69,7 +69,13 @@
 
       <!-- Badge links -->
       <div class="badges">
-        <a class="badge" href="#" target="_blank">📝 arXiv</a>
+        <a class="badge" href="#" onclick="showComingSoon(); return false;">📝 arXiv</a>
+                <script>
+                  function showComingSoon() {
+                    alert('Coming soon!');
+                  }
+                </script>
+                
         <a class="badge" href="https://github.com/ARIS-AI-Lab/CataGuide-Net" target="_blank">🐙 GitHub</a>
         <a class="badge" href="https://www.synapse.org/Synapse:syn53404507" target="_blank">📂 CataGuide-1k Dataset</a>
         <a class="badge" href="https://ftp.itec.aau.at/datasets/ovid/cat-101/" target="_blank">📂 CataGuide-101 Dataset</a>
@@ -132,14 +138,17 @@
     </section>
 
 
-    <section id="results">
+    <section id="results" style="padding: 2rem 0;">
       <h2>Results</h2>
+      <p style="max-width: 1000px; margin: 1rem auto 2rem; font-size: 1rem; line-height: 1.6; text-align: left;">
+        CataGuide-Net continuously monitors the surgeon’s performance by analyzing real-time surgical video segments. For each segment, the system evaluates whether trajectory correction is necessary. If a deviation from expert-level behavior is detected, the system generates and displays a corrected trajectory suggestion, as shown in the examples below. If no correction is needed, the system proceeds silently without interruption.
+      </p>
       <div style="display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;">
         <img src="static/gif/stage_2.gif" alt="Result 1" style="width: 48%; height: auto; border-radius: 4px;" />
         <img src="static/gif/stage_6.gif" alt="Result 2" style="width: 48%; height: auto; border-radius: 4px;" />
-        
       </div>
     </section>
+    
 
     <section id="potential_ applications">
       <h2>Potential Applications</h2>

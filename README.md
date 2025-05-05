@@ -30,6 +30,7 @@ pip install -r requirements.txt
 
 ### 2. Train the Trajectory Generator
 
+
 ```bash
 python GAIL_train.py
 ```
