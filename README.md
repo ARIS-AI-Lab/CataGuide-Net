@@ -24,12 +24,20 @@ cd Video_Classification
 ## Getting Start
 
 ### 1. Install Dependencies
-```bash
-pip install -r requirements.txt
-```
+
 ```bash
 git clone git@github.com:ARIS-AI-Lab/CataGuide-Net.git
 ```
+
+```bash
+conda create -n cataguide python=3.8 -y
+conda activate cataguide
+```
+
+```bash
+pip install -r requirements.txt
+```
+
 ### 3. Train the Trajectory Generator
 ```bash
 python diffusion_train.py
