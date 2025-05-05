@@ -30,7 +30,7 @@ pip install -r requirements.txt
 
 ### 2. Train the Trajectory Generator
 ```bash
-python GAIL_train.py
+python diffusion_train.py
 ```
 
 You can find all our pre-trained model [here](https://drive.google.com/drive/folders/1XWkPpOvfDpVvim4MM7nbUQyge_vu9xJL)
